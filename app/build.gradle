@@ -1,0 +1,54 @@
+
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        applicationId "com.iplay.assistant.terrariabox"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    lintOptions {
+        abortOnError = false
+    }
+
+    signingConfigs {
+        sign {
+            keyAlias = 'com.example'
+            keyPassword = 'testtest'
+            storeFile = file('demo.keystore')
+            storePassword = 'testtest'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig = signingConfigs.sign
+            proguardFiles.add(file('proguard-rules.pro'))
+            println(proguardFiles.toString())
+        }
+        debug {
+            debuggable = true
+            signingConfig = signingConfigs.sign
+        }
+    }
+}
+
+repositories {
+    
+    mavenCentral()
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile project(':CommonUtils')
+}

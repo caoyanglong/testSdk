@@ -1,0 +1,27 @@
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        //applicationId "com.vdolrm.lrmlibrary"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1//每次升级时修改versionCode和versionName
+        versionName "1.0.1"//每次升级时修改versionCode和versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
+//aar打包
+apply from: 'maven-release-aar.gradle'
