@@ -19,7 +19,7 @@ allprojects {
         jcenter()
         mavenCentral()
 
-        maven{url "https://github.com/caoyanglong/testSdk.git"}
+        maven { url "https://github.com/caoyanglong/testSdk/raw/master" }
     }
 }
 
